@@ -1,26 +1,30 @@
+from urllib import response
+#import flask
 import requests
 import json
 import os
 from dotenv import load_dotenv, find_dotenv
+from random import randrange
 
-load_dotenv(find_dotenv())  # This is to load your API keys from .env
+load_dotenv(find_dotenv())
 
-def get_top_10_weekly_trending_movies():
+def get_movies():
     
-    TMDB_TRENDING_MOVIES_API_BASE_URL = 'https://api.themoviedb.org/3/trending/movie/week'
-    
+    MOVIE_IDS = [157336, 14836, 646385]
+    MOVIE_PATH = f'/movie/{MOVIE_IDS[randrange(3)]}'
+    MOVIE_API_BASE_URL = f'https://api.themoviedb.org/3{MOVIE_PATH}'
+
     response = requests.get(
-        TMDB_TRENDING_MOVIES_API_BASE_URL,
+        MOVIE_API_BASE_URL,
         params={
             'api_key': os.getenv('TMDB_API_KEY')
         }
     )
+    json_data = response.json()
 
-    json_data = response.json()   
-    weekly_trending_movie_object = json_data
-    weekly_trending_movie_list = weekly_trending_movie_object['results']
+    movie_1 = json_data
+    movie_1_data = movie_1['title']
 
-    for i in range(10):
-        print(weekly_trending_movie_list[i]['title'])
-        
-get_top_10_weekly_trending_movies()
+    print(movie_1_data)
+
+get_movies()
