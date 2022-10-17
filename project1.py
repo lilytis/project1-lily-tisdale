@@ -10,10 +10,10 @@ load_dotenv(find_dotenv())
 
 def get_movies():
     
-    MOVIE_IDS = [10719, 50014, 222935]
+    MOVIE_IDS = [10719, 50014, 296096]
     MOVIE_PATH = f'/movie/{MOVIE_IDS[randrange(3)]}'
     MOVIE_API_BASE_URL = f'https://api.themoviedb.org/3{MOVIE_PATH}'
-    #WIKI_IMAGE_URL = ''
+    IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
 
     response = requests.get(
         MOVIE_API_BASE_URL,
@@ -23,21 +23,21 @@ def get_movies():
     )
 
     this_movie = response.json()
+    image_path = IMAGE_URL + this_movie['poster_path']
     genres_of_movie = ""
-    for genre in response['genres']:
+    for genre in this_movie['genres']:
         genres_of_movie += str(genre['name']) + ", "
 
-    movie_info = [this_movie['original_title'], this_movie['overview']]
-    
+    movie_info = [this_movie['original_title'], this_movie['tagline'], genres_of_movie, image_path]
+
     return movie_info
-    #print(movie_info)
 
 app = flask.Flask(__name__)
 #app.secret_key = 'lmtlmtlmt'
 
 @app.route('/')
 def website_title():
-    get_movies();
-    return flask.render_template('website.html')
+    list_of_movie_info = get_movies()
+    return flask.render_template('website.html', title=list_of_movie_info[0], tagline=list_of_movie_info[1], genres=list_of_movie_info[2], image=list_of_movie_info[3])
 
 app.run()
