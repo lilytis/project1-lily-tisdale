@@ -1,5 +1,5 @@
 from urllib import response
-#import flask
+import flask
 import requests
 import json
 import os
@@ -10,7 +10,7 @@ load_dotenv(find_dotenv())
 
 def get_movies():
     
-    MOVIE_IDS = [157336, 14836, 646385]
+    MOVIE_IDS = [10719, 50014, 222935]
     MOVIE_PATH = f'/movie/{MOVIE_IDS[randrange(3)]}'
     MOVIE_API_BASE_URL = f'https://api.themoviedb.org/3{MOVIE_PATH}'
 
@@ -22,9 +22,18 @@ def get_movies():
     )
     json_data = response.json()
 
-    movie_1 = json_data
-    movie_1_data = movie_1['title']
+    this_movie = json_data
+    movie_data = this_movie['title']
 
-    print(movie_1_data)
+    print(movie_data)
 
 get_movies()
+
+app = flask.Flask(__name__)
+app.secret_key = 'lmtlmtlmt'
+
+@app.route('/')
+def wesbite_title():
+    return flask.render_template('website.html')
+
+app.run(debug=True)
