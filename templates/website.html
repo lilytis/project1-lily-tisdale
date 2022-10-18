@@ -1,28 +1,39 @@
 <html>
-    <head>    </head>
-    
-    <body>
-        <h1>
+    <head>
+        <style>
+            img {
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+            }
+        </style>
+    </head>
+
+    <body style="background-color:lemonchiffon">
+        <h1 style="text-align:center; background-color: lightsalmon; display:inline-block;">
            <b>Movie Explorer</b>
         </h1>
-        <h2>
+        <h2 style="text-align:center;">
             {{title}}
         </h2>
-        <h3>
+        <h3 style="text-align:center;">
             {{tagline}}
         </h3>
-        <h4>
+        <h4 style="text-align:center;">
             Genres: {{genres}}
         </h4>
 
         <img src= {{image}} alt={{title}}>
         
-        <h3></h3>
-        <a href= {{link}}> Wikipedia Link for {{title}}</a>
+        <h3 style="text-align:center;">
+            <a href= {{link}}> Wikipedia Link for {{title}}</a>
+        </h3>
         
         <h3></h3>
-        <h3>Is this your favorite movie, too? Provide an email address to recieve the best ways to watch it!</h3>
-        <form method="POST" action="'/handle_form">
+        <h3 style="text-align:center;">
+            Is this your favorite movie, too? Provide an email address to recieve the best ways to watch it!
+        </h3>
+        <form style="text-align:center;" method="POST" action="'/handle_form">
             <input type="text" id="secret_id"/>
             <input type="submit" value="SUBMIT"/>
         </form>
