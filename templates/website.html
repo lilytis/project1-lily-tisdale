@@ -1,5 +1,6 @@
 <html>
     <head>    </head>
+    
     <body>
         <h1>
            <b>Movie Explorer</b>
@@ -11,10 +12,19 @@
             {{tagline}}
         </h3>
         <h4>
-            {{genres}}
+            Genres: {{genres}}
         </h4>
 
         <img src= {{image}} alt={{title}}>
-
+        
+        <h3></h3>
+        <a href= {{link}}> Wikipedia Link for {{title}}</a>
+        
+        <h3></h3>
+        <h3>Is this your favorite movie, too? Provide an email address to recieve the best ways to watch it!</h3>
+        <form method="POST" action="'/handle_form">
+            <input type="text" id="secret_id"/>
+            <input type="submit" value="SUBMIT"/>
+        </form>
     </body>
 </html>
