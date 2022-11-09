@@ -59,4 +59,4 @@ def website_title():
     list_of_movie_info = get_movies()
     return flask.render_template('website.html', title=list_of_movie_info[0], tagline=list_of_movie_info[1], genres=list_of_movie_info[2], image=list_of_movie_info[3], link=list_of_movie_info[4])
 
-#app.run(debug=True)
+#app.run()

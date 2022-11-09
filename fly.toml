@@ -1,4 +1,4 @@
-# fly.toml file generated for project1-lily-tisdale on 2022-11-02T17:10:43-05:00
+# fly.toml file generated for project1-lily-tisdale on 2022-11-02T18:29:47-05:00
 
 app = "project1-lily-tisdale"
 kill_signal = "SIGINT"
@@ -6,9 +6,10 @@ kill_timeout = 5
 processes = []
 
 [build]
-  image = "flyio/project1-lily-tisdale:latest"
+  builder = "paketobuildpacks/builder:base"
 
 [env]
+  PORT = "8080"
 
 [experimental]
   allowed_public_ports = []
