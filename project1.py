@@ -8,8 +8,7 @@ from random import randrange
 
 load_dotenv(find_dotenv())
 
-def get_movies():
-    
+def get_movies():    
     MOVIE_IDS = [642885, 616820, 760161]
     MOVIE_PATH = f'/movie/{MOVIE_IDS[randrange(3)]}'
     MOVIE_API_BASE_URL = f'https://api.themoviedb.org/3{MOVIE_PATH}'
